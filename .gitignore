@@ -1,0 +1,16 @@
+# Ignore local data files
+data/raw/*
+data/processed/*
+*.csv
+*.xlsx
+*.json
+
+# Ignore Python cache and environments
+__pycache__/
+*.pyc
+.env
+venv/
+
+# Keep the data folders themselves, just ignore the files inside
+!data/raw/.gitkeep
+!data/processed/.gitkeep
