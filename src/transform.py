@@ -49,8 +49,10 @@ def transform_official_cases(input_path : str, output_path: str) -> None:
         logging.error(f"Missing expected column in CSV: {error}")
         raise
 
-if __name__ == " __main__ " :
+if __name__ == "__main__" :
     RAW_DATA_PATH = "data/raw/confirmed_cases.csv"
     CLEAN_DATA_PATH = "data/processed/weelkly_cases.csv"
 
+
+    print("DEBUG : tHE EXECUTION BLOCK HAS STARTED")
     transform_official_cases(input_path = RAW_DATA_PATH, output_path= CLEAN_DATA_PATH)
