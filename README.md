@@ -1,7 +1,7 @@
 # Public Health Tracker
 
 ## Overview
-[Write 2-3 sentences here explaining that this is an ETL pipeline built in Python to process South African COVID-19 and mortality data, and eventually load it into a PostgreSQL Star Schema.]
+This is an ETL pipeline built in Python to process South African COVID-19 and mortality data, and eventually load it into a PostgreSQL Star Schema.
 
 ## Architecture & Tech Stack
 * **Language:** Python 3
