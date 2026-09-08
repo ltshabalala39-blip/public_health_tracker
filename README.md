@@ -10,8 +10,8 @@ This is an ETL pipeline built in Python to process South African COVID-19 and mo
 * **Environment:** Ubuntu Linux
 
 ## Data Sources
-* **Confirmed Cases:** 
-* **Excess Mortality:** 
+* **Confirmed Cases:** COVID-19 dataset provided by the Data Science for Social Impact (DSFSI) research group at the University of Pretoria
+* **Excess Mortality:** Weekly death reports and historical data provided by the South African Medical Research Council (SAMRC).
 
 ## Local Setup & Installation
 To run this pipeline locally, run the following commands in your terminal:
