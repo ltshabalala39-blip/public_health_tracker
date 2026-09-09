@@ -9,6 +9,8 @@ network error handling and logs execution states for monitoring
 import requests
 import os
 import logging
+import pandas as pd
+
 
 #Configuring professional logging
 logging.basicConfig(
@@ -48,8 +50,40 @@ def download_official_cases(url:str, output_path: str) -> None:
         logging.error(f"Extraction failed. Network error occured : {error}")
         raise #Raise the error so that  the pipeline knows the extraction failed
 
+def extract_samrc_data(file_path : str) -> pd.DataFrame:
+    """
+    Parses the SAMRC Excel file ,handling the formatted header rows and
+    slicing out non-date summary rows.
+    :param file_path:
+    :return:
+    """
+    logging.info(f"Extracting SAMRC data from :{file_path}")
+
+    # 1. Skip the first 2 rows so the province codes (EC, FS, GT) become headers
+    print("Available sheets:", pd.ExcelFile(file_path, engine="openpyxl").sheet_names)
+    df = pd.read_excel(
+        file_path,
+        engine="openpyxl",
+        sheet_name="Province natural 1+yr",
+        skiprows = 1
+    )
+
+    # 2. Its going to slice the dataframe to skip the first data row("Cumulative prior to first week")
+    #iloc[1:] just means keep everything from index 1 only
+
+    # df = df.iloc[1:].reset_index(drop=True)
+
+    return df
+
+
+
 
 if __name__ == "__main__" :
-    TARGET_URL = "https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv"
-    LOCAL_FILE_PATH = "data/raw/confirmed_cases.csv"
-    download_official_cases(url=TARGET_URL, output_path=LOCAL_FILE_PATH)
+    # TARGET_URL = "https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv"
+    # LOCAL_FILE_PATH = "data/raw/confirmed_cases.csv"
+    # download_official_cases(url=TARGET_URL, output_path=LOCAL_FILE_PATH)
+
+    # tHis the to test the SAMRC extraction :
+    samrc_file_path = "data/raw/samrc_mortality_data.xlsx"
+    df_samrc = extract_samrc_data(samrc_file_path)
+    print(df_samrc.head())
