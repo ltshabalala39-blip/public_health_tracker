@@ -49,6 +49,18 @@ def transform_official_cases(input_path : str, output_path: str) -> None:
         logging.error(f"Missing expected column in CSV: {error}")
         raise
 
+def clean_samrc_data(df):
+    """Transform raw SAMRC data into a clean, databse-ready format."""
+
+    df = df.rename(columns={
+        "Unnamed: 0" : "week",
+        "Unnamed: 1" : "date"
+    })
+
+    df.columns = df.columns.str.lower().str.replace(" ", "_")
+
+    return df
+
 if __name__ == "__main__" :
     RAW_DATA_PATH = "data/raw/confirmed_cases.csv"
     CLEAN_DATA_PATH = "data/processed/weelkly_cases.csv"
