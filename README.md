@@ -9,6 +9,14 @@ This is an ETL pipeline built in Python to process South African COVID-19 and mo
 * **Database:** PostgreSQL (Star Schema)
 * **Environment:** Ubuntu Linux
 
+## Features
+* **Automated Data Transformation:** Processes raw health statistics into a clean, structured JSON format.
+* **Containerized Deployment:** Fully dockerized environment ensuring consistent, reproducible builds across local and production machines without dependency conflicts.
+* **CORS Middleware:** Configured securely to allow cross-origin requests, enabling seamless consumption by downstream front-end clients (Flutter Mobile/Web).
+* **Auto-Generated Documentation:** Built-in Swagger UI for interactive API exploration and live testing.
+
+## Tech Stack
+
 ## Data Sources
 * **Confirmed Cases:** COVID-19 dataset provided by the Data Science for Social Impact (DSFSI) research group at the University of Pretoria
 * **Excess Mortality:** Weekly death reports and historical data provided by the South African Medical Research Council (SAMRC).
